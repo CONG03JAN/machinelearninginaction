@@ -1,1 +1,5 @@
 # machinelearninginaction
+
+- DecisionTree
+- kNN
+- NaiveBayesian
