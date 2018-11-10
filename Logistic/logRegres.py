@@ -19,6 +19,7 @@ import numpy as np
 # 返回回归系数
 # ***********************
 
+
 # 获取训练数据
 def loadDataSet():
     dataMat = []
@@ -98,6 +99,7 @@ def classifyVector(inX, weights):
         return 1
     else:
         return 0
+    
 
 def colicTest():
     frTrain = open('horseColicTraining.txt')
@@ -133,6 +135,7 @@ def multiTest():
     for k in range(numTests):
         errorSum += colicTest()
     print("after %d iteratiions the average error rate is: %f" % (numTests, errorSum / float(numTests)))
+    np.array()
 
 
 if __name__ == "__main__":

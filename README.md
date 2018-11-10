@@ -3,3 +3,6 @@
 - DecisionTree
 - kNN
 - NaiveBayesian
+- Logistic
+
+- Regression
