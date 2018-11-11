@@ -1,8 +1,7 @@
 # machinelearninginaction
 
-- DecisionTree
+- Tree
 - kNN
 - NaiveBayesian
 - Logistic
-
 - Regression
