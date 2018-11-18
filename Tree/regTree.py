@@ -33,11 +33,9 @@ def binSplitDataSet(dataSet, feature, value):
 
 def createTree(dataSet, leafType, errType, ops=(1, 4)):
     feat, val = chooseBestSplit(dataSet, leafType, errType, ops)
-    if feat == None:
+    if feat is None:
         return val
-    retTree = {}
-    retTree['spInd'] = feat
-    retTree['spVal'] = val
+    retTree = {'spInd': feat, 'spVal': val}
     lSet, rSet = binSplitDataSet(dataSet, feat, val)
     retTree['left'] = createTree(lSet, leafType, errType, ops)
     retTree['right'] = createTree(rSet, leafType, errType, ops)
@@ -92,7 +90,7 @@ def chooseBestSplit(dataSet, leafType, errType, ops):
 
 # 判断是否为树
 def isTree(obj):
-    return (type(obj).__name__ == 'dict')
+    return type(obj).__name__ == 'dict'
 
 
 # 对子树进行塌陷处理
@@ -115,7 +113,7 @@ def prune(tree, testData):
 
     lSet = []
     rSet = []
-    if (isTree(tree['right']) or isTree(tree['left'])):
+    if isTree(tree['right']) or isTree(tree['left']):
         lSet, rSet = binSplitDataSet(testData, tree['spInd'], tree['spVal'])
 
     if isTree(tree['left']):
@@ -179,12 +177,12 @@ def treeForeCast(tree, inData, modelEval=regTreeEval):
     if not isTree(tree):
         return modelEval(tree, inData)
     if inData[tree['spInd']] > tree['spVal']:
-        if isTree[tree['left']]:
+        if isTree(tree['left']):
             return treeForeCast(tree['left'], inData, modelEval)
         else:
             return modelEval(tree['left'], inData)
     else:
-        if isTree[tree['right']]:
+        if isTree(tree['right']):
             return treeForeCast(tree['right'], inData, modelEval)
         else:
             return modelEval(tree['right'], inData)
